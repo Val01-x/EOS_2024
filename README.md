@@ -6,6 +6,7 @@ Une solution personnalisée et adaptée aux besoins de l’utilisateur permet ai
 ## Accès
 * [Codes](https://github.com/HugJax/EOS/tree/main/Codes)
 * [Schéma électronique](https://github.com/HugJax/EOS/tree/main/Electronique)
+* [Modèles 3D](https://github.com/HugJax/EOS/tree/main/Mod%C3%A8les%203D)
 
 
 ## Open Source
@@ -13,7 +14,7 @@ Ce projet est open source, vous pouvez donc télécharger tous les fichiers pour
 
 
 ## Matériel nécessaire
-Vous pouvez trouver les codes et modèles 3D (nous vous suggérons du Z-ABS) sur ce repository.  
+Vous pouvez trouver les codes et modèles 3D (nous vous suggérons du Z-ABS) sur ce repository. Pour modifier les modèles 3D, ces derniers ont été réalisés grâce au logiciel fusion 360.  
 Pour la partie électronique, nous avons eu besoin de :
 * [Cellule de charge](https://www.amazon.fr/s?k=Cellule+de+charge&__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_2&tag=754fr-21)
 * [HX711](https://www.amazon.fr/s?k=HX711&__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_2)
