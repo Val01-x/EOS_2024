@@ -27,8 +27,11 @@ Pour la partie électronique, nous avons eu besoin de :
 * [Moteur pas à pas](https://www.amazon.fr/dp/B00PNEQUZ2/)
 * [Ecran LCD](https://www.amazon.fr/AZDelivery-HD44780-1602-Module-16-caractères-Arduino-Display/dp/B079T264ZZ/ref=sr_1_7?__mk_fr_FR=ÅMÅŽÕÑ&crid=2UM9VVTDYC33R&keywords=écran+lcd+1602&qid=1643294070&s=computers&sprefix=écran+lcd+1602%2Ccomputers%2C92&sr=1-7)
 * [Alimentation](https://www.amazon.fr/dp/B083LWHWKC)
-* [Convertisseur 12V vers 5V](https://www.amazon.fr/dp/B07SRXR1VT/)
+* [Convertisseur 12V vers 5V](www.amazon.fr/Greluma-convertisseur-abaisseur-régulateur-dalimentation/dp/B08K37TS6F)
 * Quatre boutons poussoirs
 * Quatre résistances de 10kΩ  
 
-Un [tutoriel](https://raspberrypi-tutorials.fr/construire-une-balance-numerique-raspberry-pi-avec-capteur-de-poids-hx711/) vous permet de construire la balance que nous avons utilisé.
+Un [tutoriel](https://raspberrypi-tutorials.fr/construire-une-balance-numerique-raspberry-pi-avec-capteur-de-poids-hx711/) vous permet de construire la balance que nous avons utilisé.  
+Pour l'ensemble des branchements, nous vous proposons le schéma électronique suivant :
+![circuit-électronique](https://github.com/HugJax/EOS/blob/main/Electronique/circuit%20%C3%A9lectronique.png)  
+Le fichier [Fritzing](https://github.com/HugJax/EOS/blob/main/Electronique/branchements%20fritzing.fzz) est également disponible pour retravailler les branchements.
