@@ -1,4 +1,4 @@
-![logo-eos](https://github.com/HugJax/EOS/blob/main/Images/logo%20eos.png)  
+<img src="https://github.com/HugJax/EOS/blob/main/Images/logo%20eos.png" width="350">   
 
 Notre projet a pour vocation de promouvoir le développement des PME en leur proposant un outil adapté à leur besoin et à leurs moyens, leur permettant ainsi de mieux lutter contre la concurrence des grands groupes nationaux et internationaux. Pour ainsi dire, offrir aux petites entreprises une solution qui favorise leur développement et leur expansion sur le marché.
 Une solution personnalisée et adaptée aux besoins de l’utilisateur permet ainsi d’accompagner l’entreprise dans une production plus automatisée et donc le développement de ces dernières.
