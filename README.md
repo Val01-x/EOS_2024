@@ -7,7 +7,7 @@ Une solution personnalisée et adaptée aux besoins de l’utilisateur permet ai
 ## Accès
 * [Codes](https://github.com/HugJax/EOS/tree/main/Codes)
 * [Schéma électronique](https://github.com/HugJax/EOS/tree/main/Electronique)
-* [Modèles 3D](https://github.com/HugJax/EOS/tree/main/Mod%C3%A8les%203D)
+* [Modèles 3D](https://github.com/HugJax/EOS/tree/main/Mod%C3%A8les%203D) ou sur [Thingiverse](https://www.thingiverse.com/thing:5220804)
 
 
 ## Open Source
