@@ -30,7 +30,7 @@ Pour la partie électronique, nous avons eu besoin de :
 * [Alimentation](https://www.amazon.fr/dp/B083LWHWKC)
 * [Convertisseur 12V vers 5V](www.amazon.fr/Greluma-convertisseur-abaisseur-régulateur-dalimentation/dp/B08K37TS6F)
 * Quatre boutons poussoirs
-* Quatre résistances de 10kΩ  
+* Quatre résistances de 10kΩ et un de 5kΩ  
 
 Un [tutoriel](https://raspberrypi-tutorials.fr/construire-une-balance-numerique-raspberry-pi-avec-capteur-de-poids-hx711/) vous permet de construire la balance que nous avons utilisé.  
 
