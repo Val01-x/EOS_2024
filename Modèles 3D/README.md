@@ -33,3 +33,7 @@ Vous pouvez accéder aux [plans du prototype](https://github.com/HugJax/EOS/blob
 
 * Etape 7 :
 <img src="https://github.com/HugJax/EOS/blob/main/Images/etape%207.png" width="350">  
+
+
+## Boîte pour les composants électroniques
+Nous avons également créé une boite réalisée sur Illustrator qui peut être découpée au laser. Cette boîte permet de rassembler et de cacher les composants et circuits. Le fichier peut être récupéré sur ce [lien](https://github.com/HugJax/EOS/blob/main/Mod%C3%A8les%203D/BoiteElectronique.svg).
