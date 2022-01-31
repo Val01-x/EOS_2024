@@ -124,7 +124,6 @@ def rotateMotor(_poidsMax):
         try :
             _poids = getPoids()
             afficherPoidsActuel(int(_poids))
-            # print("GNEUU")
             if (_poids < _poidsMax*BalancePercent1 and rotateSpeed != 1):
                 rotateSpeed = 1
             elif(_poids >= _poidsMax*BalancePercent1 and _poids < _poidsMax*BalancePercent2 and rotateSpeed != 2):
@@ -132,7 +131,6 @@ def rotateMotor(_poidsMax):
             elif (_poids >= _poidsMax*BalancePercent2 and _poids < _poidsMax and rotateSpeed != 3):
                 rotateSpeed = 3
             elif (_poids > _poidsMax):
-                print("ON S'ARRETE")
                 threadStop = True;
                 x.join()
                 rotateSpeed = 0
@@ -149,7 +147,6 @@ def rotateMotor(_poidsMax):
             threadStop = True;
             x.join()
             # GPIO.cleanup()
-            # print("Bye!")
             # sys.exit()
     print("On est sortis du while")
 
@@ -243,7 +240,6 @@ def button_callback(pin):
         global data_options
         global poids
         
-        print("GNEU", menuState)
         if (menuState == "menu"):
             if btnNb == 0:
                 menuState = "mise_en_sachet_en_attente"
@@ -260,7 +256,6 @@ def button_callback(pin):
                 if data_options['data']['ordre'] == "kg":
                     pds = pds * 1000;
                 rotateMotor(pds)
-                print("FAIRE TOURNER LES SERVIETTES")
                 mise_en_sachet_en_attente()
             elif btnNb == 3:
                 menuState = "menu"
