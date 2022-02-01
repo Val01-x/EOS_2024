@@ -24,7 +24,7 @@ Pour la partie électronique, nous avons eu besoin de :
 * Deux planches (les planches ne doivent pas se plier facilement, donc le mieux est de ne pas avoir un contreplaqué trop fin)
 * Boulons plus longs + écrous correspondants
 * [Raspbery Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/)
-* [Driver de moteur pas à pas](https://www.amazon.fr/azdelivery-A4988-dmos-baguettes-dissipateur-thermique/dp/B01N9QOJ99/ref=sr_1_5?__mk_fr_FR=ÅMÅŽÕÑ&crid=1ULCTZJZIXN6R&keywords=a4988&qid=1643294036&s=computers&sprefix=a4988%2Ccomputers%2C87&sr=1-5)
+* [A4988](https://www.amazon.fr/azdelivery-A4988-dmos-baguettes-dissipateur-thermique/dp/B01N9QOJ99/ref=sr_1_5?__mk_fr_FR=ÅMÅŽÕÑ&crid=1ULCTZJZIXN6R&keywords=a4988&qid=1643294036&s=computers&sprefix=a4988%2Ccomputers%2C87&sr=1-5)
 * [Moteur pas à pas](https://www.amazon.fr/dp/B00PNEQUZ2/)
 * [Ecran LCD](https://www.amazon.fr/AZDelivery-HD44780-1602-Module-16-caractères-Arduino-Display/dp/B079T264ZZ/ref=sr_1_7?__mk_fr_FR=ÅMÅŽÕÑ&crid=2UM9VVTDYC33R&keywords=écran+lcd+1602&qid=1643294070&s=computers&sprefix=écran+lcd+1602%2Ccomputers%2C92&sr=1-7)
 * [Alimentation](https://www.amazon.fr/dp/B083LWHWKC)
