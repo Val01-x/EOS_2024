@@ -30,17 +30,19 @@ speedMed = 16
 speedMin = 64
 
 BalancePercent1 = 0.8
-BalancePercent2 = 0.9
+BalancePercent2 = 0.95
 
 rotateSpeed = 1
 threadStop = False
-
+continueRotate = True
+stopRotation = False;
+tmpPdsMax = 0;
 #-------------------------------------
 
 DIR = 21   # Direction GPIO Pin
 STEP = 20  # Step GPIO Pin
-CW = 1     # Clockwise Rotation
-CCW = 0    # Counterclockwise Rotation
+CW = 0     # Clockwise Rotation
+CCW = 1    # Counterclockwise Rotation
 SPR = 48   # Steps per Revolution (360 / 7.5)
 
 GPIO.setup(DIR, GPIO.OUT)
@@ -62,15 +64,18 @@ delay = .0208 / (32*3)
 
 #-------------------------------------
 
-# referenceUnit = ((212815 + 212716 + 212610)/3) / 500 #1kg bar
-referenceUnit = ((-221902 + -221951 + -222027)/3)/1000 #10kg bar
+referenceUnit1 = ((-273360 + -272796 + -272141)/3) / 250 #1kg bar
+referenceUnit10 = ((-221902 + -221951 + -222027)/3)/1000 #10kg bar
+
+# data_options["data"]['referenceUnitState'] = True
+
 # referenceUnit = 1
 brocheDT = 5
 brocheSCK = 16
 
 hx = HX711(brocheDT, brocheSCK)
 hx.set_reading_format("MSB", "MSB")
-hx.set_reference_unit(referenceUnit)
+hx.set_reference_unit(referenceUnit10)
 hx.reset()
 hx.tare()
 print("Tare done! Add weight now...")
@@ -79,7 +84,7 @@ print("Tare done! Add weight now...")
 
 def getPoids():
     val = hx.get_weight(5)
-    print(val)
+    # print(val)
     
     hx.power_down()
     hx.power_up()
@@ -108,29 +113,34 @@ def rotateIndefinitely(_):
         if (sT > 0):
             rotate(sT)
 
-def rotateMotor(_poidsMax):
+def threadRotate(_):
     global rotateSpeed
     global threadStop
+    global continueRotate;
+    global stopRotation
+    global tmpPdsMax
+    global menuState
     counter = 0;
-    threadStop = False
     x = threading.Thread(target=rotateIndefinitely, args=(1,))
     x.start()
     b1 = BalancePercent1
     b2 = BalancePercent2
     
+    stopRotation = False;
     continueRotate = True;
-    # rotateSpeed = 1
+    threadStop = False;
+    
     while continueRotate: 
         try :
             _poids = getPoids()
             afficherPoidsActuel(int(_poids))
-            if (_poids < _poidsMax*BalancePercent1 and rotateSpeed != 1):
+            if (_poids < tmpPdsMax*BalancePercent1 and rotateSpeed != 1):
                 rotateSpeed = 1
-            elif(_poids >= _poidsMax*BalancePercent1 and _poids < _poidsMax*BalancePercent2 and rotateSpeed != 2):
+            elif(_poids >= tmpPdsMax*BalancePercent1 and _poids < tmpPdsMax*BalancePercent2 and rotateSpeed != 2):
                 rotateSpeed = 2
-            elif (_poids >= _poidsMax*BalancePercent2 and _poids < _poidsMax and rotateSpeed != 3):
+            elif (_poids >= tmpPdsMax*BalancePercent2 and _poids < tmpPdsMax and rotateSpeed != 3):
                 rotateSpeed = 3
-            elif (_poids > _poidsMax):
+            elif (_poids > tmpPdsMax):
                 threadStop = True;
                 x.join()
                 rotateSpeed = 0
@@ -142,19 +152,41 @@ def rotateMotor(_poidsMax):
               time.sleep(0.3)
               GPIO.output(DIR, CCW)
               counter = 0
+            # print("pds Max:",tmpPdsMax)
+            # print("thread stopRotation:",stopRotation)
+            # print("thread threadStop:", threadStop)
+            # print("thread continueRotate:", continueRotate)
+            if stopRotation == True:
+                # print("ON STOP LA ROTATION")
+                # stopRotation = False;
+                threadStop = True
+                x.join()
+                continueRotate = False;
             
         except (KeyboardInterrupt, SystemExit):
             threadStop = True;
             x.join()
-            # GPIO.cleanup()
-            # sys.exit()
-    print("On est sortis du while")
+            continueRotate = False;
+    if threadStop == False or stopRotation == True:
+        threadStop = True
+        x.join()
+    
+    stopRotation = False;
+    continueRotate = True;
+    threadStop = False;
+    menuState = "mise_en_sachet_en_attente"
+    mise_en_sachet_en_attente()
+
+def rotateMotor():
+    x = threading.Thread(target=threadRotate, args=(1,))
+    x.start()
 
 def current_milli_time():
     return round(time.time() * 1000)
 
 def start():
-    lcd.clear()
+    # lcd.clear()
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     lcd.cursor_pos = (0, 3)  # 0 = 1Ã¨re ligne / 3 = 4Ã¨me colonne
     lcd.write_string(u' Bienvenue')
@@ -164,7 +196,8 @@ def start():
     menu()
 
 def menu():
-    lcd.clear()
+    # lcd.clear()
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     lcd.cursor_pos = (0, 1)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
     lcd.write_string(u'Mise en sachet')
@@ -172,7 +205,9 @@ def menu():
     lcd.write_string(u'Options')
 
 def mise_en_sachet_en_attente():
-    lcd.clear()
+    # print("Fct mise en sachet en attente")
+    # lcd.clear()
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     lcd.cursor_pos = (0, 1)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
     lcd.write_string(u'Poids : ')
@@ -182,7 +217,8 @@ def mise_en_sachet_en_attente():
     lcd.write_string(str(data_options['data']['ordre']))
 
 def options():
-    lcd.clear()
+    # lcd.clear()
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     lcd.cursor_pos = (0, 1)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
     lcd.write_string(u'Poids : ')
@@ -195,7 +231,8 @@ def options():
 
 def options_poids():
     pds = data_options['data']['poidsNew']
-    lcd.clear()
+    # lcd.clear()
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     lcd.cursor_pos = (0, 1)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
     lcd.write_string(u'Nouveau poids')
@@ -207,7 +244,8 @@ def options_poids():
     lcd.write_string(u'-')
 
 def options_ordre():
-    lcd.clear()
+    # lcd.clear()
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     lcd.cursor_pos = (0, 1)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
     lcd.write_string(u'Nouvel ordre')
@@ -224,44 +262,92 @@ def enregistrer():
 def afficherPoidsActuel(pds):
     # lcd.clear()
     # lcd.write_string(u'                                ')
+    print("POIDS:", pds)
     lcd.cursor_pos = (1, 0)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
-    pdsStr = str(pds) + ' g'
+    if pds == 0:
+        pdsStr = "0 g"
+    else :
+        pdsStr = str(pds) + ' g'
     spaceStr = ' '*(16-len(pdsStr))
     lcd.write_string(u'' + pdsStr + spaceStr)
 
 
 def button_callback(pin):
     btnNb = pinBtn.index(pin)
+    global menuState
+    global data_options
+    # global poids
+    global stopRotation
+    global tmpPdsMax
+    # global referenceUnitState
+    
     if (current_milli_time() > timeBtn[btnNb] + 100):
-        print("BOUTON ", btnNb)
+        # print("BOUTON ", btnNb)
+        # print(menuState)
         timeBtn[btnNb] = current_milli_time()
-        
-        global menuState
-        global data_options
-        global poids
         
         if (menuState == "menu"):
             if btnNb == 0:
+                hx.tare()
                 menuState = "mise_en_sachet_en_attente"
                 mise_en_sachet_en_attente()
             elif btnNb == 1:
                 menuState = "options"
                 options()
-            
+            """
+            elif btnNb == 3:
+                # referenceUnit1
+                # referenceUnit10
+                data_options["data"]['referenceUnitState']  = not data_options["data"]['referenceUnitState'] 
+                enregistrer()
+                
+                lcd.write_string(u'                                ')
+                lcd.cursor_pos = (0, 1) 
+                lcd.write_string(u'Cellule switch')
+                lcd.cursor_pos = (1, 1) 
+                
+                # lcd.write_string(u'LOL')
+                if data_options["data"]['referenceUnitState'] :
+                    hx.set_reference_unit(referenceUnit1)
+                    lcd.write_string(u'1  kg')
+                else:
+                    hx.set_reference_unit(referenceUnit10)
+                    lcd.write_string(u'10 kg')
+                hx.reset()
+                hx.tare()
+                print("TARE FAITE")
+                
+                time.sleep(2.5)
+                
+                lcd.cursor_pos = (0, 0)
+                lcd.write_string(u'                                ')
+                lcd.cursor_pos = (0, 1)  # 0 = 1Ã¨re ligne / 1 = 2Ã¨me colonne
+                lcd.write_string(u'Mise en sachet')
+                lcd.cursor_pos = (1, 1)  # 1 = 2Ã¨me ligne / 1 = 2Ã¨me colonne
+                lcd.write_string(u'Options')
+            """
         elif (menuState == "mise_en_sachet_en_attente"):
             if btnNb == 2:
+                menuState = "mise_en_sache_en_cours"
                 lcd.cursor_pos = (0, 0)
                 lcd.write_string(u' Poids actuel:  ')
-                pds = data_options['data']['poids'];
+                tmpPdsMax = data_options['data']['poids'];
                 if data_options['data']['ordre'] == "kg":
-                    pds = pds * 1000;
-                rotateMotor(pds)
-                mise_en_sachet_en_attente()
+                    tmpPdsMax = tmpPdsMax * 1000;
+                stopRotation = False;
+                rotateMotor()
+                # mise_en_sachet_en_attente()
             elif btnNb == 3:
                 menuState = "menu"
                 menu()
                 
-            
+        elif (menuState == "mise_en_sache_en_cours"):
+            if btnNb == 3:
+                stopRotation = True;
+                # print("event:", stopRotation)
+                menuState = "mise_en_sachet_en_attente"
+                mise_en_sachet_en_attente()
+                
         elif (menuState == "options"):
             if btnNb == 0:
                 menuState = "options_poids"
@@ -314,10 +400,12 @@ try:
     while True:
         time.sleep(1)
 except (KeyboardInterrupt, SystemExit):
+    lcd.cursor_pos = (0, 0)
     lcd.write_string(u'                                ')
     GPIO.cleanup()
     print("Cleaning & exit")
     sys.exit();
+lcd.cursor_pos = (0, 0)
 lcd.write_string(u'                                ')
 GPIO.output(STEP, GPIO.LOW)
 GPIO.cleanup()
