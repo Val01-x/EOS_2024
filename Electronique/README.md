@@ -7,4 +7,5 @@ Le fichier [Fritzing](https://github.com/HugJax/EOS/blob/main/Electronique/branc
 
 ## Axes d'amélioration
 
-Un des composants affiché (un RHT1) n'est pas le bon sensor et correspond à la cellule de charge (ce dernier n'étant pas disponible sur le logiciel Fritzing).
+Le convertisseur de tension n'apparaît pas dans le schéma
+
