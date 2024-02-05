@@ -31,13 +31,14 @@ Matériel nécessaire
 * Deux breadboard
 * Colle forte
 * 3 boutons
-* Un écran LCD 
+* Un écran OLED 
 
 Outils nécesaire 
 
 * Pince (découpe cable)
 * Découpeuse laser
 * Arduino IDE
+* Fer à souder
 
 
 
@@ -49,17 +50,12 @@ Pour la partie électronique, nous avons eu besoin de :
 * Cables jumper
 * Deux planches (les planches ne doivent pas se plier facilement, donc le mieux est de ne pas avoir un contreplaqué trop fin)
 * Boulons plus longs + écrous correspondants
-* [Raspbery Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/)
-* [A4988](https://www.amazon.fr/azdelivery-A4988-dmos-baguettes-dissipateur-thermique/dp/B01N9QOJ99/ref=sr_1_5?__mk_fr_FR=ÅMÅŽÕÑ&crid=1ULCTZJZIXN6R&keywords=a4988&qid=1643294036&s=computers&sprefix=a4988%2Ccomputers%2C87&sr=1-5)
-* [Moteur pas à pas](https://www.amazon.fr/dp/B00PNEQUZ2/)
-* [Ecran LCD](https://www.amazon.fr/AZDelivery-HD44780-1602-Module-16-caractères-Arduino-Display/dp/B079T264ZZ/ref=sr_1_7?__mk_fr_FR=ÅMÅŽÕÑ&crid=2UM9VVTDYC33R&keywords=écran+lcd+1602&qid=1643294070&s=computers&sprefix=écran+lcd+1602%2Ccomputers%2C92&sr=1-7)
+
+* [Ecran OLED](https://www.gotronic.fr/art-module-afficheur-oled-0-96-tf052-28511.htm)
 * [Alimentation](https://www.amazon.fr/dp/B083LWHWKC)
 * [Convertisseur 12V vers 5V](www.amazon.fr/Greluma-convertisseur-abaisseur-régulateur-dalimentation/dp/B08K37TS6F)
 * Quatre boutons poussoirs
 * Quatre résistances de 10kΩ et une de 5kΩ  
-
-Un [tutoriel](https://raspberrypi-tutorials.fr/construire-une-balance-numerique-raspberry-pi-avec-capteur-de-poids-hx711/) vous permet de construire la balance que nous avons utilisé.  
-
 
 ## Contribution
 Si vous voulez contribuer au développement de ce projet, toute contribution d'une personne enthousiaste est la bienvenue. Pour cela, le projet EOS a maintenant un miroir sur GitHub, pour simplifier la vie de tout le monde ! Toutes les corrections de bogues, les nouvelles fonctionnalités, les nouveaux tutoriels, etc. doivent être soumis via le mécanisme de pull requests de GitHub.
