@@ -16,6 +16,32 @@ Ce projet est open source, vous pouvez donc télécharger tous les fichiers pour
 
 ## Matériel nécessaire
 Vous pouvez trouver les codes et modèles 3D (nous vous suggérons du Z-ABS) sur ce repository. Pour modifier les modèles 3D, ces derniers ont été réalisés grâce au logiciel fusion 360.  
+
+Matériel nécessaire 
+
+* Breadboard
+* Arduino nano
+* 2 micro-servo moteurs 9g MS18
+* Convertisseur de tension (LED Converter) modèle 12V24-C
+* cable USB mini-B
+* Module reais SRD-05VDC-SL-C
+* Fils femelle-femelle, mâle-mâle et mâle-femelle
+* Planche de bois 30x60 cm
+* Bobine de fil de nichrome de diamètre 0.2mm
+* Deux breadboard
+* Colle forte
+* 3 boutons
+* Un écran LCD 
+
+Outils nécesaire 
+
+* Pince (découpe cable)
+* Découpeuse laser
+* Arduino IDE
+
+
+
+
 Pour la partie électronique, nous avons eu besoin de :
 * [Cellule de charge](https://www.amazon.fr/s?k=Cellule+de+charge&__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_2&tag=754fr-21)
 * [HX711](https://www.amazon.fr/s?k=HX711&__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_2)
