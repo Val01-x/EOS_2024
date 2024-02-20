@@ -1,0 +1,49 @@
+Cellule de charge 1
+	Noir	connecter à	Module Hx711 1		sur	E-
+	Vert	connecter à	Module Hx711 1		sur	A+
+	Blanc	connecter à	Module Hx711 1		sur	A-
+	Rouge	connecter à	Module Hx711 1		sur	E+
+
+Cellule de charge 2
+	Noir	connecter à	Module Hx711 2		sur	E-
+	Vert	connecter à	Module Hx711 2		sur	A+
+	Blanc	connecter à	Module Hx711 2		sur	A-
+	Rouge	connecter à	Module Hx711 2		sur	E+	
+
+Module Hx711 1
+	E+	connecter à	Cellule de charge 1	sur	Rouge
+	E-	connecter à	Cellule de charge 1	sur	Noir
+	A+	connecter à	Cellule de charge 1	sur	Vert
+	A-	connecter à	Cellule de charge 1	sur	Blanc
+	B-	connecter à		
+	B+	connecter à		
+	Gnd	connecter à	Arduino nano		sur	Gnd
+	Dt	connecter à	Arduino nano		sur	D3
+	Sck	connecter à	Arduino nano		sur	D2
+	Vcc	connecter à	Arduino nano		sur	5v
+
+Module Hx711 2
+	E+	connecter à	Cellule de charge 2	sur	Rouge
+	E-	connecter à	Cellule de charge 2	sur	Noir
+	A+	connecter à	Cellule de charge 2	sur	Vert
+	A-	connecter à	Cellule de charge 2	sur	Blanc
+	B-	connecter à	
+	B+	connecter à		
+	Gnd	connecter à	Arduino nano		sur	Gnd
+	Dt	connecter à	Arduino nano		sur	D8
+	Sck	connecter à	Arduino nano		sur	D7
+	Vcc	connecter à	Arduino nano		sur	5v
+
+Servo
+	Maron	connecter à	Arduino nano			sur	Gnd
+	Rouge	connecter à	Arduino nano		sur	5v
+	Orange	connecter à	Arduino nano		sur	D9
+
+Arduino nano
+	Gnd	connecter à	Module Hx711 1,2 et servo	sur	Gnd, Maron
+	5v	connecter à	Module Hx711 1,2 et servo	sur	Vcc,Rouge
+	D3	connecter à	Module Hx711 1			sur	Dt
+	D2	connecter à	Module Hx711 1			sur	Sck
+	D8	connecter à	Module Hx711 2			sur	Dt
+	D7	connecter à	Module Hx711 2			sur	Sck
+	D9	connecter à	Servo				sur	Orange
